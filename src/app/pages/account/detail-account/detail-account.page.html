@@ -1,0 +1,39 @@
+
+
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Detalle de cuenta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="dismissModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{account.name}}</ion-card-subtitle>
+      <ion-card-title>Saldo Disponible: {{account.balance |currency}}</ion-card-title>
+      <ion-label>  Tipo de cuenta: {{account.type}}</ion-label>
+    </ion-card-header>
+
+    <ion-card-content>
+     Movimientos
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item href="#" class="activated" *ngFor="let movents of account.movements">
+      <ion-icon [name]="(movents.type=='DEBITO') ? 'add': 'remove'" [color]="(movents.type=='DEBITO') ? 'success': 'danger'" slot="start"> </ion-icon>
+      <ion-label>
+        <h2>Valor: {{movents.value |currency}}</h2>
+        <h3>Fecha {{movents.date}}</h3>
+        <ion-text [color]="(movents?.type=='DEBITO') ? 'success': 'danger'" >{{movents.type}}</ion-text>
+      </ion-label>
+    </ion-item>
+
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mi-banco-6b5eb": {
+      "hosting": {
+        "app": [
+          "mi-banco-6b5eb"
+        ]
+      }
+    }
+  }
+}

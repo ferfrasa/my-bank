@@ -1,0 +1,55 @@
+
+
+
+<ion-content>
+
+  <ion-grid >
+    <ion-row>
+      <ion-col size="12">
+        <div class="ion-text-center">
+          <h3>Iniciar Sesión</h3>
+          Ingresa tu usuario y contraseña
+          <ion-item>
+            <ion-label class="ion-text-wrap" color="danger">
+              {{errorLogin}}
+            </ion-label>
+          </ion-item>
+
+        </div>
+      </ion-col>
+
+      <ion-col   size-lg="6" size-md="8" size-sm="12" size-xs="12">
+
+        <form [formGroup]="formLogin"  (ngSubmit)="doLogin()"  >
+          <ion-item>
+            <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text>   </ion-label>
+
+            <ion-input required name="email"  type="email"
+                formControlName="email" [(ngModel)]="iUser.user"
+
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"></ion-input>
+          </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required name="password"  formControlName="password" [(ngModel)]="iUser.pass"  type="password"></ion-input>
+          </ion-item>
+         <ion-button expand="full" block color="primary"
+                  type="submit" [disabled]="formLogin.invalid">
+            {{(isProcessLogin)?'Cargando':'Login'}}
+          </ion-button>
+
+
+
+      </form>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>
+
+
+
