@@ -1,0 +1,85 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Inscribir cuenta </ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="dismissModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="formCreateOtherAccount"  (ngSubmit)="saveOtherAccount()"  >
+    <ion-item>
+      <ion-label position="floating">Alias <ion-text color="danger">*</ion-text>   </ion-label>
+
+      <ion-input required name="alias"  type="text"
+          formControlName="alias" [(ngModel)]="iOtherAccounts.alias"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Documento Titular <ion-text color="danger">*</ion-text>   </ion-label>
+
+      <ion-input required name="documentoTitular"  type="tel"
+
+      (ionInput)="inputValidatorOnlyNumbers($event)"
+       maxlength="12"
+      minlength="12"
+          formControlName="documentoTitular" [(ngModel)]="iOtherAccounts.documentoTitular"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Numero Cuenta <ion-text color="danger">*</ion-text>   </ion-label>
+
+      <ion-input required name="numeroCuenta"
+      (ionInput)="inputValidatorOnlyNumbers($event)"
+      type="tel" maxlength="11"
+      minlength="11"
+         formControlName="numeroCuenta" [(ngModel)]="iOtherAccounts.numeroCuenta"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de cuenta</ion-label>
+      <ion-select placeholder="Tipo de cuenta" placeholder="Seleccione tipo de cuenta"
+        formControlName="tipo"
+      [(ngModel)]="iOtherAccounts.tipo">
+      <ion-select-option [value]="entidad.name" *ngFor="let entidad of iTipoCuentas">{{entidad.name}}</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Entidad bancaria</ion-label>
+      <ion-select placeholder="Seleccione la entidad bancaria"  formControlName="entidadBancaria"
+          [(ngModel)]="iOtherAccounts.entidadBancaria">
+        <ion-select-option [value]="entidad.name" *ngFor="let entidad of iEntidadBancarias">
+          {{entidad.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Moneda</ion-label>
+      <ion-select placeholder="Seleccione la entidad bancaria"  formControlName="moneda"
+          [(ngModel)]="iOtherAccounts.modena">
+        <ion-select-option [value]="moneda.name" *ngFor="let moneda of iModedas">
+          {{moneda.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+   <ion-button expand="full" block color="primary" [disabled]="formCreateOtherAccount.invalid"
+            type="submit" >
+      Crear Cuenta
+    </ion-button>
+
+
+
+</form>
+
+</ion-content>
+
+
+
+

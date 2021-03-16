@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+import { Observable,  throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { IAccount, IAccountUser} from '../pages/account/iAccount'
 
 
@@ -37,19 +37,14 @@ export class AccountService {
 
 
 
-  private handleError(err: any): Observable<never> {
-    // in a real world app, we may send the server to some remote logging infrastructure
-    // instead of just logging it to the console
+  /**Atrapar error relacionado al servicio */
+  private handleError(error: any): Observable<never> {
+
     let errorMessage: string;
-    if (err.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      errorMessage = `An error occurred: ${err.error.message}`;
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
-    }
-    console.error(err);
+
+      errorMessage = `Un error ha ocurrido ${error.status}: ${error.body.error}`;
+
+    console.error(error);
     return throwError(errorMessage);
   }
 

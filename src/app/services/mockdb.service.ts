@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { IAccountUser } from '../pages/account/iAccount';
 import { User } from '../pages/login/iLogin';
+import { IOtherAccount, IOtherAccountUser } from '../pages/other-account/IOtherAccount';
 
 
 
@@ -13,7 +14,7 @@ export class MockdbService implements InMemoryDbService {
   constructor() { }
 
 
-  createDb(reqInfo?: RequestInfo): { users: User[], accounts:IAccountUser[]} {
+  createDb(reqInfo?: RequestInfo): { users: User[], accounts:IAccountUser[], iOtherAccounts:IOtherAccountUser[]} {
 
 
     const users: User[] = [
@@ -129,7 +130,8 @@ export class MockdbService implements InMemoryDbService {
       }
 
     ];
-    return { users, accounts };
+    const iOtherAccounts:IOtherAccountUser[]=[];
+    return { users, accounts,iOtherAccounts };
   }
 }
 

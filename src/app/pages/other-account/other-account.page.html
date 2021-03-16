@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+     Cuentas Terceros
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Cuentas de terceros</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button expand="full"  (click)="suscribeOtherAccount()">Inscribir Cuentas</ion-button>
+
+
+  <ion-card *ngFor="let account of iOtherAccountUser?.iOtherAccounts" >
+
+    <ion-card-header >
+      <ion-card-subtitle>{{account.alias}}</ion-card-subtitle>
+      <ion-card-title>{{account.tipo}}</ion-card-title>
+      <ion-card-title>{{account.numeroCuenta}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text> {{account.documentoTitular}}</ion-text>
+      <ion-text> {{account.entidadBancaria}}</ion-text>
+      <ion-text> {{account.modena}}</ion-text>
+    </ion-card-content>
+
+  </ion-card>
+
+
+
+
+
+</ion-content>

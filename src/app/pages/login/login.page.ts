@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IUser } from './iLogin';
 import { Validators,FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { error } from 'selenium-webdriver';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
@@ -20,7 +19,11 @@ export class LoginPage implements OnInit {
   errorLogin:string;
   isProcessLogin:boolean;
 
-  constructor( private formBuilder: FormBuilder, private auth:AuthService, private router:Router, private userService:UserService) {
+  constructor( private formBuilder: FormBuilder,
+    private auth:AuthService,
+    private router:Router,
+    private userService:UserService) {
+      
     this.iUser={
       pass:'',
       user:'',
