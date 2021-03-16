@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MockdbService } from './services/mockdb.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 
 
@@ -30,7 +31,7 @@ import { MockdbService } from './services/mockdb.service';
     ReactiveFormsModule,
     InMemoryWebApiModule.forRoot(MockdbService)
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [BarcodeScanner,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

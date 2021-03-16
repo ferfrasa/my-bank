@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ComponetsModule } from '../componets/componets.module';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 
 
 
@@ -12,11 +14,20 @@ import { ComponetsModule } from '../componets/componets.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ComponetsModule
+    ComponetsModule,
+    NgxQRCodeModule,
   ],
   exports:[
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+    NgxQRCodeModule
+  ],
+
 })
 export class SharedModule { }
+
+
+
+
+
+

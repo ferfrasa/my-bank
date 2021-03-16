@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Cuentas QR
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,75 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cuentas Bancarias</ion-title>
+      <ion-title size="large">Cuentas Bancarias Transferencias QR</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+  <ng-container *ngIf="iOtherAccounts.length>0; else noFoundAccount">
+
+
+
+
+    <ion-card>
+      <form [formGroup]="formCreateQR" (ngSubmit)="generateQR()" >
+        <ion-item>
+          <ion-label>Seleccione la cuenta que desea realizar la transferencia</ion-label>
+          <ion-select placeholder="Seleccione la cuenta que desea realizar la transferencia"
+          [(ngModel)]="parametrosQR.cuenta" formControlName="cuenta">
+          <ion-select-option [value]="account?.numeroCuenta"
+            *ngFor="let account of iOtherAccounts">
+            {{account.alias}} - {{account.tipo}}</ion-select-option>
+           </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Tipo de moneda</ion-label>
+          <ion-input [(ngModel)]="parametrosQR.valor" formControlName="valor" type="number" placeholder="Valor a Transferir"></ion-input>
+          <ion-select placeholder="Tipo de moneda"
+          [(ngModel)]="parametrosQR.moneda" formControlName="moneda">
+           <ion-select-option [value]="moneda.name"
+            *ngFor="let moneda of iModedas">
+             {{moneda.name}}</ion-select-option>
+           </ion-select>
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-button expand="full" block color="primary" [disabled]="formCreateQR.invalid"
+                  type="submit" > Crear Cuenta </ion-button>
+         </ion-item>
+      </form>
+
+
+
+      <ion-card-content>
+
+        <ngx-qrcode *ngIf="isCompleteQR"
+        [elementType]="elementType"
+        [value]="value"
+        cssClass="aclass"
+        errorCorrectionLevel="L">
+      </ngx-qrcode>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+
+
+
+      <ion-button expand="full" block color="primary"  (click)="readQR()"
+      > Tienes un código QR ? </ion-button>
+
+    </ion-card>
+
+
+  </ng-container>
+
+  <ng-template #noFoundAccount>
+    <h2>No tienes cuentas de terceros registradas </h2>
+  </ng-template>
+
+
 </ion-content>

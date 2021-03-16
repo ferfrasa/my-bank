@@ -31,8 +31,11 @@ export class AuthService {
   logoutUser(): Promise<void>{
     try {
 
+      debugger
       return this.angularAuth.signOut().then(()=>{
         this.token=null;
+        localStorage.clear();
+        this.router.navigateByUrl('login')
     });
     } catch (error) {
 

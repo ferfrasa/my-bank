@@ -28,7 +28,6 @@ export class OtherAccountService {
   }
 
   getOtherAccountLocalStorage(id: string): Observable<any> {
-    debugger
 
     let account/*:IOtherAccount*/;
     let otherAccounts:IOtherAccount[]

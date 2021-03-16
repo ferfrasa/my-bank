@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../other-account/other-account.module').then(m => m.OtherAccountPageModule)
       },
       {
+        path: 'options',
+        loadChildren: () => import('../options/options.module').then( m => m.OptionsPageModule)
+      },
+      {
         path: '',
         redirectTo: '/app/client',
         pathMatch: 'full'
